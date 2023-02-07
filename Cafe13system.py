@@ -7,30 +7,22 @@ def admin_entry():
     print("Login successful!")
 
     while 1:
-        print("")
-        print("Admin Entry")
-        print("1. Register new Staff")
-        print("2. Register new Manager")
-        print("3. Delete existing Staff")
-        print("4. Delete existing Manager")
-        print("5. Logout")
+        print("\n\nAdmin Entry\n1. Register new Staff\n2. Register new Manager\n3.Delete existing Staff\n4. Delete existing Manager\n5. Logout")
 
-        option_user = input(str("Option number: "))
+        option_user = input("Option number: ")
         if option_user == "1":
-            print("")
-            print("Register New Staff")
-            username = input(str("Staff username: "))
-            password = input(str("Staff password: "))
+            print("\n\nRegister New Staff")
+            username = input("Staff username: ")
+            password = input("Staff password: ")
             query_vals = (username, password)
             command_handler.execute("INSERT INTO users (username, password, privilege) VALUES (%s, %s, 'Staff')", query_vals)
             db.commit()
             print(username + " has been registered as a Staff")
 
         elif option_user == "2":
-            print("")
-            print("Register New Manager")
-            username = input(str("Manager username: "))
-            password = input(str("Manager password: "))
+            print("\n\nRegister New Manager")
+            username = input("Manager username: ")
+            password = input("Manager password: ")
             query_vals = (username, password)
             command_handler.execute("INSERT INTO users (username, password, privilege) VALUES (%s, %s, 'Manager')",
                                     query_vals)
@@ -38,9 +30,8 @@ def admin_entry():
             print(username + " has been registered as a Manager")
 
         elif option_user == "3":
-            print("")
-            print("Delete Existing Staff Account")
-            username = input(str("Staff username: "))
+            print("\n\nDelete Existing Staff Account")
+            username = input("Staff username: ")
             query_vals = (username, "Staff")
             command_handler.execute("DELETE FROM users WHERE username = %s AND privilege = %s ", query_vals)
             db.commit()
@@ -50,9 +41,8 @@ def admin_entry():
                 print(username + " has been deleted!")
 
         elif option_user == "4":
-            print("")
-            print("Delete Existing Manager Account")
-            username = input(str("Manager username: "))
+            print("\n\nDelete Existing Manager Account")
+            username = input("Manager username: ")
             query_vals = (username, "Manager")
             command_handler.execute("DELETE FROM users WHERE username = %s AND privilege = %s ", query_vals)
             db.commit()
@@ -68,11 +58,9 @@ def admin_entry():
             print("No valid option selected!")
 
 def admin_login():
-    print("")
-    print("Admin Login")
-    print("")
-    username = input(str("Username: "))
-    password = input(str("Password: "))
+    print("\n\nAdmin Login\n")
+    username = input("Username: ")
+    password = input("Password: ")
     if username == "Cafe13":
         if password == "MalihaAlam132000":
             admin_entry()
@@ -83,13 +71,9 @@ def admin_login():
 
 def main():
     while 1:
-        print("Welcome to the Cafe13 system!")
-        print("")
-        print("1. Login as Staff")
-        print("2. Login as Manager")
-        print("3. Login as Admin")
+        print("Welcome to the Cafe13 system!\n\n1. Login as Staff\n2. Login as Manager\n3.Login as Admin")
 
-        option_user = input(str("Option number: "))
+        option_user = input("Option number: ")
         if option_user == "1":
             print("Staff Login")
         elif option_user == "2":
@@ -100,5 +84,7 @@ def main():
             print("Invalid option")
 
 main()
+
+
 
 
